@@ -179,6 +179,16 @@ public class SVGBitmapTextureAtlasTextureRegionFactory {
 	public static ITextureRegion createFromAsset(final BuildableBitmapTextureAtlas pBuildableBitmapTextureAtlas, final Context pContext, final String pAssetPath, final int pWidth, final int pHeight, final ISVGColorMapper pSVGColorMapper) {
 		return createFromAsset(pBuildableBitmapTextureAtlas, pContext, pAssetPath, pWidth, pHeight, false, pSVGColorMapper);
 	}
+
+	public static ITiledTextureRegion createTiledFromAsset(final BuildableBitmapTextureAtlas pBuildableBitmapTextureAtlas, final Context pContext, final String pAssetPath, final int pTileColumns, final int pTileRows) {
+		final IBitmapTextureAtlasSource textureSource = new SVGAssetBitmapTextureAtlasSource(pContext, SVGBitmapTextureAtlasTextureRegionFactory.sAssetBasePath + pAssetPath);
+		return BuildableTextureAtlasTextureRegionFactory.createTiledFromSource(pBuildableBitmapTextureAtlas, textureSource, pTileColumns, pTileRows);
+	}
+
+	public static ITiledTextureRegion createTiledFromAsset(final BuildableBitmapTextureAtlas pBuildableBitmapTextureAtlas, final Context pContext, final String pAssetPath, final float pScale, final int pTileColumns, final int pTileRows) {
+		final IBitmapTextureAtlasSource textureSource = new SVGAssetBitmapTextureAtlasSource(pContext, SVGBitmapTextureAtlasTextureRegionFactory.sAssetBasePath + pAssetPath, pScale);
+		return BuildableTextureAtlasTextureRegionFactory.createTiledFromSource(pBuildableBitmapTextureAtlas, textureSource, pTileColumns, pTileRows);
+	}
 	
 	public static ITextureRegion createFromAsset(final BuildableBitmapTextureAtlas pBuildableBitmapTextureAtlas, final Context pContext, final String pAssetPath, final int pWidth, final int pHeight, final boolean pRotated, final ISVGColorMapper pSVGColorMapper) {
 		final IBitmapTextureAtlasSource textureSource = new SVGAssetBitmapTextureAtlasSource(pContext, SVGBitmapTextureAtlasTextureRegionFactory.sAssetBasePath + pAssetPath, SVGBitmapTextureAtlasTextureRegionFactory.applyScaleFactor(pWidth), SVGBitmapTextureAtlasTextureRegionFactory.applyScaleFactor(pHeight), pSVGColorMapper);
