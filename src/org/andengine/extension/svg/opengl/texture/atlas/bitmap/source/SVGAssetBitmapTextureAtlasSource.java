@@ -32,6 +32,14 @@ public class SVGAssetBitmapTextureAtlasSource extends SVGBaseBitmapTextureAtlasS
 	// Constructors
 	// ===========================================================
 
+	public SVGAssetBitmapTextureAtlasSource(final Context pContext, final String pAssetPath) {
+		this(pContext, pAssetPath, 1.0f);
+	}
+	
+	public SVGAssetBitmapTextureAtlasSource(final Context pContext, final String pAssetPath, final float pScale) {
+		this(pContext, pAssetPath, 0, 0,  pScale);
+	}
+
 	public SVGAssetBitmapTextureAtlasSource(final Context pContext, final String pAssetPath, final int pTextureX, final int pTextureY) {
 		this(pContext, pAssetPath, pTextureX, pTextureY, null);
 	}

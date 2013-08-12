@@ -98,6 +98,10 @@ public class SVGBitmapTextureAtlasTextureRegionFactory {
 	}
 
 
+	public static ITextureRegion createFromAsset(final BitmapTextureAtlas pBitmapTextureAtlas, final Context pContext, final String pAssetPath) {
+		return SVGBitmapTextureAtlasTextureRegionFactory.createFromAsset(pBitmapTextureAtlas, pContext, pAssetPath);
+	}
+	
 	public static ITextureRegion createFromAsset(final BitmapTextureAtlas pBitmapTextureAtlas, final Context pContext, final String pAssetPath, final int pWidth, final int pHeight, final int pTextureX, final int pTextureY) {
 		return SVGBitmapTextureAtlasTextureRegionFactory.createFromAsset(pBitmapTextureAtlas, pContext, pAssetPath, pWidth, pHeight, null, pTextureX, pTextureY);
 	}
@@ -153,6 +157,16 @@ public class SVGBitmapTextureAtlasTextureRegionFactory {
 		return BuildableTextureAtlasTextureRegionFactory.createTiledFromSource(pBuildableBitmapTextureAtlas, textureSource, pTileColumns, pTileRows);
 	}
 
+
+	public static ITextureRegion createFromAsset(final BuildableBitmapTextureAtlas pBuildableBitmapTextureAtlas, final Context pContext, final String pAssetPath) {
+		final IBitmapTextureAtlasSource textureSource = new SVGAssetBitmapTextureAtlasSource(pContext, SVGBitmapTextureAtlasTextureRegionFactory.sAssetBasePath + pAssetPath);
+		return BuildableTextureAtlasTextureRegionFactory.createFromSource(pBuildableBitmapTextureAtlas, textureSource, false);
+	}
+
+	public static ITextureRegion createFromAsset(final BuildableBitmapTextureAtlas pBuildableBitmapTextureAtlas, final Context pContext, final String pAssetPath, float pScale) {
+		final IBitmapTextureAtlasSource textureSource = new SVGAssetBitmapTextureAtlasSource(pContext, SVGBitmapTextureAtlasTextureRegionFactory.sAssetBasePath + pAssetPath, pScale);
+		return BuildableTextureAtlasTextureRegionFactory.createFromSource(pBuildableBitmapTextureAtlas, textureSource, false);
+	}
 
 	public static ITextureRegion createFromAsset(final BuildableBitmapTextureAtlas pBuildableBitmapTextureAtlas, final Context pContext, final String pAssetPath, final int pWidth, final int pHeight) {
 		return SVGBitmapTextureAtlasTextureRegionFactory.createFromAsset(pBuildableBitmapTextureAtlas, pContext, pAssetPath, pWidth, pHeight, null);

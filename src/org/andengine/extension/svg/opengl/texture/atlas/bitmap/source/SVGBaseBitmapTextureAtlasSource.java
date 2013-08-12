@@ -28,7 +28,7 @@ public class SVGBaseBitmapTextureAtlasSource extends PictureBitmapTextureAtlasSo
 	// ===========================================================
 
 	public SVGBaseBitmapTextureAtlasSource(final SVG pSVG) {
-		this(pSVG, 0, 0);
+		this(pSVG, pSVG.getPicture().getWidth(), pSVG.getPicture().getHeight());
 	}
 
 	public SVGBaseBitmapTextureAtlasSource(final SVG pSVG, final float pScale) {
